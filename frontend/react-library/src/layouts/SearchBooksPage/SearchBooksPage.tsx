@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Book from "../../../models/Book";
-import { SpinnerLoading } from "../../Utils/SpinnerLoading";
+import Book from "../../models/Book.model";
+import { SpinnerLoading } from "../Utils/SpinnerLoading";
 import { SearchBook } from "./SearchBook";
-import { Pagination } from "../../Utils/Pagination";
+import { Pagination } from "../Utils/Pagination";
 
 export const SearchBooksPage = () => {
 
@@ -23,7 +23,7 @@ export const SearchBooksPage = () => {
 
     useEffect(() => {
         const fetchBooks = async () => {
-            const baseUrl: string = 'http://localhost:8003/api/books';
+            const baseUrl: string = import.meta.env.VITE_API_BOOKS_URL;
             let url: string = ``;
 
             if (searchUrL === '') {
@@ -71,9 +71,29 @@ export const SearchBooksPage = () => {
                 setHttpError(error.message);
             })
 
+        // Custom scroll animation to the top with duration
+        const scrollToTop = (duration: number) => {
+            const startY = window.scrollY;
+            const startTime = performance.now();
+
+            const animateScroll = (currentTime: number) => {
+                const elapsedTime = currentTime - startTime;
+                const progress = Math.min(elapsedTime / duration, 1); // Ensure progress is capped at 1
+                const scrollY = startY * (1 - progress);
+
+                window.scrollTo(0, scrollY);
+
+                if (progress < 1) {
+                    requestAnimationFrame(animateScroll);
+                }
+            };
+
+            requestAnimationFrame(animateScroll);
+        };
+        scrollToTop(777);
         // this mean each time useEffect gets kicked off, 
         // we are going to scroll the page to the top
-        window.scrollTo(0, 0);
+        // window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }, [currPage, searchUrL]);
 
     if (isLoading) {

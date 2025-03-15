@@ -1,6 +1,7 @@
 package com.tai3.spring_boot_library.config;
 
 import com.tai3.spring_boot_library.model.Book;
+import com.tai3.spring_boot_library.model.Message;
 import com.tai3.spring_boot_library.model.Review;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 @Configuration
 public class MyDataRestConfig implements RepositoryRestConfigurer {
     private final String theAllowedOrigins = "http://localhost:5173";
+    private final String theAllowedSecureOrigins = "https://localhost:5173";
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config,
@@ -21,15 +23,16 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
                 HttpMethod.DELETE,
                 HttpMethod.PUT
         };
-
-        config.exposeIdsFor(Book.class, Review.class);
+        //Set the list of domain types for which we will expose the ID value as a normal property.
+        config.exposeIdsFor(Book.class, Review.class, Message.class);
 
         disableHttpMethods(Book.class, config, theUnsupportedActions);
         disableHttpMethods(Review.class, config, theUnsupportedActions);
+        disableHttpMethods(Message.class, config, theUnsupportedActions);
 
         /*Configure CORS Mapping*/
         cors.addMapping(config.getBasePath() + "/**")
-                .allowedOrigins(theAllowedOrigins);
+                .allowedOrigins(theAllowedOrigins,theAllowedSecureOrigins);
     }
 
     private void disableHttpMethods(Class<?> theClass,

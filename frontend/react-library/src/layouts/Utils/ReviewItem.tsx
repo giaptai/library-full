@@ -1,5 +1,5 @@
 import React from "react";
-import Review from "../../models/Review";
+import Review from "../../models/Review.model";
 import { StarsReview } from "./StarsReview";
 
 export const ReviewItem: React.FC<{ review: Review, key: number }> = (props) => {
@@ -21,7 +21,7 @@ export const ReviewItem: React.FC<{ review: Review, key: number }> = (props) => 
                 </div>
             </div>
             <div className='mt-2'>
-                <p>{props.review.reviewDescription}</p>
+                <p>{props.review.reviewDescription === "" ? <i>No review description</i> : props.review.reviewDescription}</p>
             </div>
         </div>
         <hr />

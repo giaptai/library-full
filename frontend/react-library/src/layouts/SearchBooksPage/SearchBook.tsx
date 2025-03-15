@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Book from "../../../models/Book";
+import Book from "../../models/Book.model";
 
 //export const SearchBook = (props: { book: Book }) 
 // dùng cách này cho biet props la 1 doi tuong co thuoc tinh book kieu du lieu Book

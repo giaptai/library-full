@@ -1,6 +1,6 @@
 import { ReturnBook } from "./ReturnBook";
 import { useState, useEffect } from "react";
-import Book from "../../../models/Book";
+import Book from "../../../models/Book.model";
 import { SpinnerLoading } from "../../Utils/SpinnerLoading";
 import { Link } from "react-router-dom";
 
@@ -14,7 +14,7 @@ export const Carousel = () => {
     //then will call each time something in this array changes
     useEffect(() => {
         const fetchBooks = async () => {
-            const baseUrl: string = 'http://localhost:8003/api/books';
+            const baseUrl: string = import.meta.env.VITE_API_BOOKS_URL;
             const url: string = `${baseUrl}?page=0&size=9&projection=bookView`;
 
             const res = await fetch(url);
@@ -56,7 +56,7 @@ export const Carousel = () => {
             <SpinnerLoading />
         );
     }
-    if (httpError) {
+    if (httpError !== null) {
         <div className="container m-5">
             <p>{httpError}</p>
         </div>
@@ -110,7 +110,7 @@ export const Carousel = () => {
             {/* Mobile */}
             <div className="d-lg-none mt-3">
                 <div className="row d-flex justify-content-center align-items-center">
-                    <ReturnBook book={books[0]} key={books[0].id} />
+                    <ReturnBook book={books[0]} key={books[0]?.id} />
                 </div>
             </div>
             <div className="homepage-carousel-title mt-3">
