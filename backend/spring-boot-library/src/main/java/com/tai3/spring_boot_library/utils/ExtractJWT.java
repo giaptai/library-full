@@ -1,5 +1,7 @@
 package com.tai3.spring_boot_library.utils;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
@@ -8,6 +10,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ExtractJWT {
+    @Value("${vnpay_hashsecret}")
+    private static String SECRET_KEY;
+
     static public String payLoadJWTExtraction(String token, String extraction) {
         token = token.replace("Bearer ", ""); //get string jwt
         String[] chunks = token.split("\\."); //return array split from periods, return 3 pieces: header, payload, signature
@@ -38,7 +43,6 @@ public class ExtractJWT {
     }
 
     public static String hmacSHA512(final String data) {
-        final String SECRET_KEY = "NYNDX9S1O6LEP2F6Y3H45FEOU5YTW4H6";
         try {
             if (data == null) {
                 throw new NullPointerException("No data !!!");
