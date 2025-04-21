@@ -8,9 +8,9 @@ Library Full is a comprehensive library management system designed to simplify t
 - [Technologies](#technologies)
 - [Setup Instructions](#setup-instructions)
 - [Usage](#-usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Contact](#-contact)
 
 ## Introduction
 The Library Full project is designed to meet the needs of modern libraries by providing tools to manage books, users, and borrowing transactions efficiently. It focuses on **performance, scalability, and ease of use**.
