@@ -10,6 +10,7 @@ Library Full is a comprehensive library management system designed to simplify t
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
+- [Contact](#contact)
 
 ## Introduction
 The Library Full project is designed to meet the needs of modern libraries by providing tools to manage books, users, and borrowing transactions efficiently. It focuses on **performance, scalability, and ease of use**.
@@ -33,6 +34,32 @@ Follow these steps to set up the project locally:
 
 ```sh
 git clone https://github.com/giaptai/library-full.git
+
 cd library-full
 npm install
 npm start
+
+cd backend
+mvn clean install
+mvn spring-boot:run
+```
+
+## 🎯 Usage
+- **Admin Dashboard:** Manage books, users, and transactions.
+- **User Portal:** Browse and borrow books.
+- **Analytics:** Gain insights into library trends.
+
+## 🤝 Contributing
+Contributions are welcome! If you’d like to enhance Library Full:
+- **Fork** the repository.
+- **Create** a new feature branch.
+- **Submit** a pull request with detailed notes.
+
+## 📝 License
+This project is licensed under the **MIT License**. See the LICENSE file for more details.
+
+## 📩 Contact
+For questions or support, reach out via:
+
+- GitHub Issues: Library Full
+- Email: hentaiktvn321@gmail.com
