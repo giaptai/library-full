@@ -7,7 +7,7 @@ Library Full is a comprehensive library management system designed to simplify t
 - [Features](#features)
 - [Technologies](#technologies)
 - [Setup Instructions](#setup-instructions)
-- [Usage](#usage)
+- [Usage](#-usage)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
